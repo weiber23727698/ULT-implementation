@@ -134,6 +134,10 @@ $U/_mp1-5: $U/mp1-5.o $(LLIB)
 	$(LD) $(LDFLAGS) -N -e main -Ttext 0 -o $@ $^
 	$(OBJDUMP) -S $@ > $*.asm
 	$(OBJDUMP) -t $@ | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$$/d' > $*.sym
+$U/_mp1-6: $U/mp1-6.o $(LLIB)
+	$(LD) $(LDFLAGS) -N -e main -Ttext 0 -o $@ $^
+	$(OBJDUMP) -S $@ > $*.asm
+	$(OBJDUMP) -t $@ | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$$/d' > $*.sym
 
 
 mkfs/mkfs: mkfs/mkfs.c $K/fs.h $K/param.h
@@ -170,6 +174,7 @@ UPROGS=\
 	$U/_mp1-3\
 	$U/_mp1-4\
 	$U/_mp1-5\
+	$U/_mp1-6\
 
 fs.img: mkfs/mkfs README $(UPROGS)
 	mkfs/mkfs fs.img README $(UPROGS)

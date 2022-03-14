@@ -222,4 +222,45 @@ def test_thread_5():
 	'exited',
     )
 
+@test(1, "thread package with public testcase 6")
+def test_thread_6():
+    r.run_qemu(shell_script([
+        'mp1-6',
+    ]))
+    r.match(
+	'mp1-6',
+	'thread 1: 100',
+	'thread 2: 10000',
+	'thread 3: 0',
+	'thread 4: 1000',
+	'thread 5: 10',
+	'thread 1: 101',
+	'thread 2: 10001',
+	'thread 3: 1',
+	'thread 4: 1001',
+	'thread 5: 11',
+	'thread 1: 102',
+	'thread 2: 10002',
+	'thread 3: 2',
+	'thread 4: 1002',
+	'thread 5: 12',
+	'thread 1: 103',
+	'thread 2: 10003',
+	'thread 3: 3',
+	'thread 4: 1003',
+	'thread 5: 13',
+	'thread 2: 10004',
+	'thread 3: 4',
+	'thread 4: 1004',
+	'thread 5: 14',
+	'thread 2: 10005',
+	'thread 3: 5',
+	'thread 4: 1005',
+	'thread 2: 10006',
+	'thread 3: 6',
+	'thread 2: 10007',
+	'',
+	'exited',
+    )
+
 run_tests()
