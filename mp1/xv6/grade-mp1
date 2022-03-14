@@ -88,7 +88,7 @@ def test_thread_1():
 	'exited',
     )
 
-@test(20, "thread package with public testcase 2")
+@test(15, "thread package with public testcase 2")
 def test_thread_2():
     r.run_qemu(shell_script([
         'mp1-2',
@@ -108,7 +108,7 @@ def test_thread_2():
 	'exited',
     )
 
-@test(20, "thread package with public testcase 3")
+@test(15, "thread package with public testcase 3")
 def test_thread_3():
     r.run_qemu(shell_script([
         'mp1-3',
@@ -130,7 +130,7 @@ def test_thread_3():
     )
 
 
-@test(20, "thread package with public testcase 4")
+@test(15, "thread package with public testcase 4")
 def test_thread4():
 	r.run_qemu(shell_script([
 		'mp1-4',
@@ -172,5 +172,54 @@ def test_thread4():
 	'',
 	'exited',
 	)
+
+@test(15, "thread package with public testcase 5")
+def test_thread_5():
+    r.run_qemu(shell_script([
+        'mp1-5',
+    ]))
+    r.match(
+	'mp1-5',
+	'thread 1: 100',
+	'thread 2: 10000',
+	'thread 4: 1000',
+	'thread 5: 10',
+	'thread 6: 10',
+	'thread 7: 10',
+	'thread 3: 0',
+	'thread 1: 101',
+	'thread 2: 10001',
+	'thread 4: 1001',
+	'thread 5: 11',
+	'thread 6: 11',
+	'thread 3: 1',
+	'thread 1: 102',
+	'thread 2: 10002',
+	'thread 4: 1002',
+	'thread 7: 11',
+	'thread 6: 12',
+	'thread 3: 2',
+	'thread 1: 103',
+	'thread 2: 10003',
+	'thread 4: 1003',
+	'thread 7: 12',
+	'thread 6: 13',
+	'thread 3: 3',
+	'thread 1: 104',
+	'thread 2: 10004',
+	'thread 4: 1004',
+	'thread 6: 14',
+	'thread 7: 13',
+	'thread 4: 1005',
+	'thread 6: 15',
+	'thread 7: 14',
+	'thread 6: 16',
+	'thread 7: 15',
+	'thread 6: 17',
+	'thread 7: 16',
+	'thread 6: 18',
+	'',
+	'exited',
+    )
 
 run_tests()
